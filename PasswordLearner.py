@@ -1,10 +1,10 @@
-#!/bin/python3
 # Password Learning Tool
 # Created by: Nick Lueth
-# Last edited: 2/29/2020
+# Last edited: 11/9/2026
 
 from os import system, name
 
+import msvcrt
 from time import sleep
 
 # This function assigns the password to learn through user input
@@ -26,6 +26,11 @@ def user_attempt(passwd):
     print("You'll have 10 seconds to remember your password:\n" + passwd)
     sleep(10)
     clear()
+
+    # Clear any keyboard input entered during the timer
+    while msvcrt.kbhit():
+        msvcrt.getch()
+
     attempt = input("Password: ").strip()
     if attempt == passwd:
         print("Well done!")
